@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UserRegisterFormComponent implements OnInit {
 
-  constructor(private router: Router) { 
-    alert('here');
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
