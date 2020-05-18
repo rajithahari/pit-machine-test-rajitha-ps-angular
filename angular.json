@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
+              "//stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
