@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'hello',
-  template: `<button type="button">Register</button>`,
-  styles: ['button {background: blue; color:white}']
+  template: `<button type="button" class="btn btn-primary">Register</button>`
 })
 export class HelloComponent  {
 }
