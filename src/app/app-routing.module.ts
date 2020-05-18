@@ -5,11 +5,11 @@ import { DisplayUserInfoComponent } from './display-user-info/display-user-info.
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'register',
     component: UserRegisterFormComponent
   },
   {
-    path: 'user/:uid',
+    path: 'display',
     component: DisplayUserInfoComponent
   }
 ];
