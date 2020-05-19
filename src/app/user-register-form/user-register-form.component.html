@@ -21,7 +21,8 @@
               <p *ngIf="invalidEmail()" class="help-block" id="email_error">{{'Invalid email'}}</p>
         </div>
         <div class="form-group checkbox">
-          <label><input type="checkbox"> Subscribe to the news letter</label>
+          <label class="checkLabel">
+            Subscribe to the news letter <input type="checkbox"><span class="checkmark"></span></label>
         </div>
         <div class="form-group has-error"> <!-- Register Button -->
           <button type="submit" class="btn btn-primary">Register</button>
