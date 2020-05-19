@@ -11,6 +11,7 @@ export class UserRegisterFormComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    
   }
 
 }
