@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"><img src="">
+      </div>
+    <div class="col-md-8">
+      <form [formGroup]='userForm' (ngSubmit)='onSubmit()'>
+          <div class="form-group" [ngClass]="{'has-error': invalidFirstName()}"> <!-- First Name -->
+              <label for="firstName" class="control-label" [ngClass]="{ 'has-error': invalidFirstName() }">First Name</label>
+              <input type="text" formControlName="firstName" id="firstName" name="firstName" class="form-control" placeholder="Rajitha">
+              <p *ngIf="invalidLastName()" id="firstName_error" class="help-block">{{'Invalid  first name.'}}</p>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': invalidLastName() }"> <!-- Last Name -->
+          <label for="lastName" class="control-label">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" id="lastName" name="lastName" placeholder="Toha">
+              <p *ngIf="invalidLastName()" id="lastName_error" class="help-block">{{'Invalid  last name'}}</p>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }"> <!-- Email -->
+          <label for="email" class="control-label">E-mail</label>
+              <input type="text" formControlName="email" class="form-control" id="email" name="email" placeholder="your@email.com">
+              <p *ngIf="invalidEmail()" class="help-block" id="email_error">{{'Invalid email'}}</p>
+        </div>
+        <div class="form-group checkbox">
+          <label><input type="checkbox"> Subscribe to the news letter</label>
+        </div>
+        <div class="form-group has-error"> <!-- Register Button -->
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

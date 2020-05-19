@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,14 +10,14 @@ import { Router } from '@angular/router';
 export class UserRegisterFormComponent implements OnInit {
   registered = false;
   submitted = false;
-  userForm: FormGroup;
+  userForm: any = new FormControl('');
   guid: string;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
   }
 
   invalidFirstName() {
-    return (this.submitted && this.userForm.controls.firstName.errors != null);
+    return (this.submitted && this.userForm.firstName.errors != null);
   }
 
   invalidLastName() {
@@ -33,7 +32,7 @@ export class UserRegisterFormComponent implements OnInit {
   ngOnInit() {
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required, Validators.pattern('^[a-zA-Z]{20}')],
-      lastName: ['', Validators.required],
+      lastName: ['', Validators.required, Validators.pattern('^[a-zA-Z]{20}')],
       email: ['', [Validators.required, Validators.email]],
       age: ['', Validators.required],
       phone: ['', Validators.required],
