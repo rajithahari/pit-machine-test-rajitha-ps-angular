@@ -1,8 +1,38 @@
+<section class="py-3">
+  <div class="container">
+    <div class="row grid-divider">
+      <div class="col-sm-12 col-md-6 col-lg-3 my-1">
+        <div class="card">
+          <div class="card-body">Some content</div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3 my-1">
+        <div class="card">
+          <div class="card-body">
+            Some content Some content Some content Some content Some content
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-3 my-1">
+        <div class="card">
+          <div class="card-body">Some content Some content Some content</div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3 my-1">
+        <div class="card">
+          <div class="card-body">Some content Some content Some content</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-4"><img src="">
-      </div>
-    <div class="col-md-8">
+    <div class="col-md-4 col-xs-4 col-lg-4"><div class="img-div"><a href="">Upload your photo</a></div>
+    </div>
+    <div class="col-md-6 col-xs-6 col-lg-6">
       <form [formGroup]='userForm' (ngSubmit)='onSubmit()'>
           <div class="form-group" [ngClass]="{'has-error': invalidFirstName()}"> <!-- First Name -->
               <label for="firstName" class="control-label" [ngClass]="{ 'has-error': invalidFirstName() }">First Name</label>

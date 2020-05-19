@@ -1,3 +1,36 @@
+.container {
+  background-color: #ddd;
+}
+.row {
+  background-color: #eee;
+}
+
+.grid-divider {
+  overflow-x: hidden; //quickfix to hide divider on left side
+  position: relative;
+}
+
+.grid-divider > [class*="col-"]:nth-child(n + 2):after {
+  content: "";
+  background-color: #ccc;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  /* @media (max-width: 767px) {
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: -4px; // quickfix to center line between columns
+  }
+  @media (min-width: 768px) {
+    width: 1px;
+    height: auto;
+    left: -1px; // quickfix to hide divider on left side
+  } */
+}
+
+
 /* The container */
 .checkLabel {
   display: block;
@@ -51,4 +84,24 @@
 /* Show the checkmark when checked */
 .checkLabel input:checked ~ .checkmark:after {
   display: block;
+}
+
+.img-div {
+  background: #2196F3;
+  height: 100px;
+  width: 120px;
+  text-align: center;
+}
+
+.img-div a { 
+  color: #fff;
+  text-decoration: underline;
+}
+
+.col-md-4:after {
+  content: "";
+  background-color: #ccc;
+  width: 2px;
+  display: block;
+  height: 100px;
 }
