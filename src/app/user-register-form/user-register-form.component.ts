@@ -40,6 +40,7 @@ export class UserRegisterFormComponent implements OnInit {
       state: ['', Validators.required],
       country: ['', Validators.required],
       interests: ['', Validators.required],
+      isSubscribed: ['']
     });
   }
 
