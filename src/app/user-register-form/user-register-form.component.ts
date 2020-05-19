@@ -35,6 +35,11 @@ export class UserRegisterFormComponent implements OnInit {
       firstName: ['', Validators.required, Validators.pattern('^[a-zA-Z]{20}')],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      age: ['', Validators.required],
+      phone: ['', Validators.required],
+      state: ['', Validators.required],
+      country: ['', Validators.required],
+      interests: ['', Validators.required],
     });
   }
 
