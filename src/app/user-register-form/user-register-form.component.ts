@@ -16,14 +16,10 @@ export class UserRegisterFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router) {
   }
 
-  invalidFirstName() {
-    return (this.submitted && this.userForm.firstName.errors != null);
+  invalidName() {
+    return (this.submitted && this.userForm.firstName.errors != null && this.userForm.controls.lastName.errors != null);
   }
-
-  invalidLastName() {
-    return (this.submitted && this.userForm.controls.lastName.errors != null);
-  }
-
+  
   invalidEmail() {
     return (this.submitted && this.userForm.controls.email.errors != null);
   }
