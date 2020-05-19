@@ -6,7 +6,7 @@
 }
 
 .grid-divider {
-  overflow-x: hidden; //quickfix to hide divider on left side
+  overflow-x: hidden; 
   position: relative;
 }
 
