@@ -19,7 +19,7 @@ export class UserRegisterFormComponent implements OnInit {
   invalidName() {
     return (this.submitted && this.userForm.firstName.errors != null && this.userForm.controls.lastName.errors != null);
   }
-  
+
   invalidEmail() {
     return (this.submitted && this.userForm.controls.email.errors != null);
   }
@@ -34,6 +34,8 @@ export class UserRegisterFormComponent implements OnInit {
       phone: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
+      address: ['', Validators.required],
+      
       interests: ['', Validators.required],
       isSubscribed: ['']
     });
