@@ -24,11 +24,6 @@ export class UserRegisterFormComponent implements OnInit {
     return (this.submitted && this.userForm.controls.email.errors != null);
   }
 
-  ageSelected() {
-    alert('here');
-  }
-
-
   ngOnInit() {
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -46,6 +41,11 @@ export class UserRegisterFormComponent implements OnInit {
     });
   }
 
+
+
+  ageSelected() {
+  }
+  
   onSubmit() {
     this.submitted = true;
     if (this.userForm.invalid === true) {
