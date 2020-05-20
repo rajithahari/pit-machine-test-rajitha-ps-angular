@@ -17,26 +17,31 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   invalidName() {
-    return (this.submitted && this.userForm.firstName.errors != null && this.userForm.controls.lastName.errors != null);
+    return (this.submitted && this.userForm.controls.firstName.errors != null && this.userForm.controls.lastName.errors != null);
   }
 
   invalidEmail() {
     return (this.submitted && this.userForm.controls.email.errors != null);
   }
 
+  ageSelected() {
+    alert('here');
+  }
+
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      firstName: ['', Validators.required, Validators.pattern('^[a-zA-Z]{20}')],
-      lastName: ['', Validators.required, Validators.pattern('^[a-zA-Z]{20}')],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       age: ['', Validators.required],
       phone: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
       address: ['', Validators.required],
-      
-      interests: ['', Validators.required],
+      address1: ['', Validators.required],
+      address2: ['', Validators.required],
+      interest: ['', Validators.required],
       isSubscribed: ['']
     });
   }

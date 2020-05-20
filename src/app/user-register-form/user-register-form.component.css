@@ -105,3 +105,8 @@
   display: block;
   height: 100px;
 }
+
+.err-msg {
+  padding-left: 15px;
+  color: red !important;
+}
