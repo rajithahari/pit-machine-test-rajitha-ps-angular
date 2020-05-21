@@ -4,7 +4,10 @@
 			<div class="col-sm-12 col-md-6 col-lg-6 my-1">
 				<div class="card">
 					<div class="card-body">
-						<div class="img-div"><a href="">Upload your photo</a></div>
+						<div class="img-div">
+              <input formControlName="file" id="file" type="file" class="hide-style">
+              <a href="#" (change)="onFileChange($event)">Upload your photo</a>
+            </div>
 					</div>
 				</div>
 			</div>
@@ -97,7 +100,7 @@
                 <!-- Interests -->
                 <label for="interest" class="control-label col-sm-4">Interests</label>
                 <div class="col-sm-8">
-                  <input type="tel" formControlName="interest" class="form-control" id="interest" name="interest" (keyup)='selectInterests($event)' value = "interests">
+                  <input type="tel" formControlName="interest" class="form-control" id="interest" name="interest" (keyup)='selectInterests($event)' value = {{interests}}>
                   <span class="tag label label-info" *ngFor="let interest of interestList;">
                     <span>{{interest}}</span><a (click) = 'removeInterest(interest)'>X</a> 
                   </span>

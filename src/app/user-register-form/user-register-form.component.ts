@@ -18,6 +18,7 @@ export class UserRegisterFormComponent implements OnInit {
   address:string = '';
   interests = '';
   interestList = [];
+  imageSrc: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
@@ -35,8 +36,8 @@ export class UserRegisterFormComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      firstName: ['', Validators.required, [Validators.pattern('^[A-Za-z -]+$')]],
-      lastName: ['', Validators.required, [Validators.pattern('^[A-Za-z -]+$')]],
+      firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]+$')]],
       email: ['', [Validators.required, Validators.email]],
       age: ['', Validators.required],
       phone: ['', Validators.required],
@@ -46,7 +47,8 @@ export class UserRegisterFormComponent implements OnInit {
       address1: ['', Validators.required],
       address2: ['', Validators.required],
       interest: ['', Validators.required],
-      isSubscribed: ['']
+      isSubscribed: [''],
+      file: ['', Validators.required]
     });
   }
 
@@ -70,8 +72,28 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   removeInterest(interest) {
-    this.interestList = this.interestList.filter(item => {return item !== interest}); 
+    this.interestList = this.interestList.filter(item => item !== interest); 
     this.interests = this.interestList.join(', ');
+  }
+
+  onFileChange(event: any) {
+    const reader = new FileReader();
+    
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+   
+        this.imageSrc = reader.result as string;
+     
+        this.userForm.patchValue({
+          fileSource: reader.result
+        });
+   
+      };
+   
+    }
   }
 
   onSubmit() {
