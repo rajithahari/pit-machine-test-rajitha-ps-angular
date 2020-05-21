@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; //added this line to your module
 
 @Component({
   selector: 'user-register-form',
@@ -18,7 +17,7 @@ export class UserRegisterFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
-    this.selectedAge = '';
+    this.selectedAge = '20-29';
   }
 
   invalidName() {

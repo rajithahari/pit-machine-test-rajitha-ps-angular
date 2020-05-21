@@ -110,3 +110,7 @@
   padding-left: 15px;
   color: red !important;
 }
+.active {
+  background-color: #666;
+  color: white;
+}
