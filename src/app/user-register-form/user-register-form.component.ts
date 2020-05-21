@@ -13,9 +13,9 @@ export class UserRegisterFormComponent implements OnInit {
   userForm: any = new FormControl('');
   guid: string;
   ageGroup = [];
-  selectedAge: number;
+  selectedAge: any;
   addressSelected: boolean;
-  address:string = '';
+  address: string = '';
   interests = '';
   interestList = [];
   imageSrc: string;
@@ -54,10 +54,24 @@ export class UserRegisterFormComponent implements OnInit {
 
   ageSelected(event: any) {
     this.selectedAge = event.target.value;
+    this.handleAgeClass();
   }
 
   ageLabelSelected(index) {
     this.selectedAge = index;
+    this.handleAgeClass();
+  }
+
+  handleAgeClass() {
+    let element: HTMLElement;
+    for (var index in this.ageGroup) {
+      element = document.getElementById('spanAge_' + index) as HTMLElement;
+      if (index === this.selectedAge) {
+        element.className = 'col-sm-3 active age-group-span';
+      } else {
+        element.className = 'col-sm-3 age-group-span';
+      }
+    }
   }
 
   selectAddress(event: any) {
@@ -72,28 +86,29 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   removeInterest(interest) {
-    this.interestList = this.interestList.filter(item => item !== interest); 
+    this.interestList = this.interestList.filter(item => item !== interest);
     this.interests = this.interestList.join(', ');
   }
 
   onFileChange(event: any) {
     const reader = new FileReader();
-    
-    if(event.target.files && event.target.files.length) {
+
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-    
       reader.onload = () => {
-   
         this.imageSrc = reader.result as string;
-     
         this.userForm.patchValue({
-          fileSource: reader.result
+          file: reader.result
         });
-   
       };
-   
     }
+  }
+
+  openFileBrowser(event: any) {
+    event.preventDefault();
+    let element: HTMLElement = document.getElementById('browseFile') as HTMLElement;
+    element.click();
   }
 
   onSubmit() {
@@ -102,6 +117,7 @@ export class UserRegisterFormComponent implements OnInit {
       return;
     } else {
       const data = this.userForm.value;
+      console.log(data);
     }
   }
 }

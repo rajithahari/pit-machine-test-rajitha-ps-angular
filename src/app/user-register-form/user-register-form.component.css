@@ -152,3 +152,7 @@
 .age-group-span {
   cursor: pointer;
 }
+
+.hide-style {
+  visibility: hidden;
+}
