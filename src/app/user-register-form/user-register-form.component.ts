@@ -14,10 +14,15 @@ export class UserRegisterFormComponent implements OnInit {
   guid: string;
   ageGroup = [];
   selectedAge = '';
+  addressSelected: boolean;
+  address:string = '';
+  interests = '';
+  interestList = [];
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
     this.selectedAge = '20-29';
+    this.addressSelected = false;
   }
 
   invalidName() {
@@ -47,6 +52,16 @@ export class UserRegisterFormComponent implements OnInit {
 
   ageSelected(event: any) {
     this.selectedAge = this.ageGroup[event.target.value];
+  }
+
+  selectAddress(event: any) {
+    this.addressSelected = true;
+    this.address = event.target.value;
+  }
+
+  selectInterests(event: any) {
+    this.interests = event.target.value;
+    this.interestList = this.interests.split(', ');
   }
 
   onSubmit() {
