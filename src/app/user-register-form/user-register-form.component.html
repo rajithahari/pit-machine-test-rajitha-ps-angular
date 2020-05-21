@@ -40,7 +40,7 @@
                   <input type="range" formControlName="age" class="form-control" id="age" name="age" min="0" max="3" step="1" (change)="ageSelected($event)">
                   
                 </div>
-                <div *ngFor="let item in ageGroup;trackBy item">{{item}}</div>
+                <div *ngFor="let item of ageGroup;trackBy item">{{item}}</div>
               </div>
               <div class="form-group row">
                 <!-- Phone -->
