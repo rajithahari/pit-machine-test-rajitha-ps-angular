@@ -26,8 +26,8 @@ export class UserRegisterFormComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', Validators.required, [Validators.pattern('^[A-Za-z -]{1,20}')]],
+      lastName: ['', Validators.required, [Validators.pattern('^[A-Za-z -]{1,20}')]],
       email: ['', [Validators.required, Validators.email]],
       age: ['', Validators.required],
       phone: ['', Validators.required],
@@ -41,11 +41,6 @@ export class UserRegisterFormComponent implements OnInit {
     });
   }
 
-
-
-  ageSelected() {
-  }
-  
   onSubmit() {
     this.submitted = true;
     if (this.userForm.invalid === true) {

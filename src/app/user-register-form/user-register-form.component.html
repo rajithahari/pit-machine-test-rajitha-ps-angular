@@ -16,10 +16,10 @@
 								<!-- First Name -->
 								<label class="col-sm-4 col-form-label" [ngClass]="{ 'has-error': invalidName() }"> Name</label>
 								<div class="col-sm-4">
-									<input type="text" formControlName="firstName" id="firstName" name="firstName" class="form-control" placeholder="First Name" pattern="[A-Za-z]" maxlength="20">
+									<input type="text" formControlName="firstName" id="firstName" name="firstName" class="form-control" placeholder="First Name" pattern="^[A-Za-z -]{1,20}" maxlength=20>
                 </div>
                 <div class="col-sm-4">
-                  <input type="text" formControlName="lastName" class="form-control" id="lastName" name="lastName" placeholder="Last Name" pattern="[A-Za-z]" maxlength="20">
+                  <input type="text" formControlName="lastName" class="form-control" id="lastName" name="lastName" placeholder="Last Name" pattern="^[A-Za-z -]{1,20}" maxlength=20>
                 </div>
                 <small *ngIf="invalidName()" id="name_error" class="form-text text-muted err-msg">Invalid name</small>
               </div>
@@ -37,7 +37,7 @@
                 <!-- Age -->
                 <label for="age" class="control-label col-sm-4">Age</label>
                 <div class="col-sm-8">
-                  <input type="range" formControlName="age" class="form-control" id="age" name="age" min="1" max="100" step="10" onchange="ageSelected()">
+                  <input type="range" formControlName="age" class="form-control" id="age" name="age" min="1" max="100" step="10">
                 </div>
               </div>
               <div class="form-group row">
