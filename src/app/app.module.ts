@@ -9,8 +9,8 @@ import { UserRegisterFormComponent } from './user-register-form/user-register-fo
 import { DisplayUserInfoComponent } from './display-user-info/display-user-info.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, CommonModule, AppRoutingModule],
-  declarations: [AppComponent, RegisterComponent, UserRegisterFormComponent, DisplayUserInfoComponent, RoutingComponent],
-  bootstrap: [AppComponent]
+  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, CommonModule, AppRoutingModule],
+  declarations: [ AppComponent, RegisterComponent, UserRegisterFormComponent, DisplayUserInfoComponent, RoutingComponent ],
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
