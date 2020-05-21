@@ -70,7 +70,7 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   removeInterest(interest) {
-    this.interestList = this.interestList.filter(item => {return item === !interest}); 
+    this.interestList = this.interestList.filter(item => {return item !== interest}); 
     this.interests = this.interestList.join(', ');
   }
 
