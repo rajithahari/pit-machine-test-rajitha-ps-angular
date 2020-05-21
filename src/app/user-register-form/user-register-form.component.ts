@@ -12,8 +12,12 @@ export class UserRegisterFormComponent implements OnInit {
   submitted = false;
   userForm: any = new FormControl('');
   guid: string;
+  ageGroup = [];
+  selectedAge = '';
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
+    this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
+    this.selectedAge = '';
   }
 
   invalidName() {
@@ -39,6 +43,10 @@ export class UserRegisterFormComponent implements OnInit {
       interest: ['', Validators.required],
       isSubscribed: ['']
     });
+  }
+
+  ageSelected(event: any) {
+    this.selectedAge = this.ageGroup[event.target.value];
   }
 
   onSubmit() {
