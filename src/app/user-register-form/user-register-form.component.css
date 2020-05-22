@@ -79,13 +79,15 @@
 
 .img-div {
   background: #2196F3;
-  height: 100px;
+  height: 120px;
   width: 120px;
   text-align: center;
 }
 
 .img-preview {
-  max-height: 150px !important;
+  max-height: 120px !important;
+  padding: 10px;
+  width: 120px;
 }
 
 .edit-a {

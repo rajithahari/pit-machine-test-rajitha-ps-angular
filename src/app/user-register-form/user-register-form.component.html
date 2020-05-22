@@ -4,15 +4,15 @@
 			<div class="col-sm-12 col-md-6 col-lg-6 my-1">
 				<div class="card">
 					<div class="card-body">
-            <div *ngIf="imageSrc">
-              <img [src]="imageSrc" class="d-block img-fluid img-preview">
-              <input #editFile accept="image/*" type="file" class="hide-style" (change)="onFileChange($event)">
-              <a class="d-block edit-a" href="javascript:void(0)" (click)="editFile.click()">Edit photo</a>
-              <a *ngIf="submitted" class="d-block edit-a" href="javascript:void(0)" (click)="editProfile()">Edit profile</a>
+            <div class="img-div">
+              <input *ngIf="!imageSrc" id="browseFile" accept="image/*" type="file" class="hide-style" (change)="onFileChange($event)">
+              <a *ngIf="!imageSrc" (click)="openFileBrowser($event)" href="javascript:void(0)" >Upload your photo</a>
+              <img [src]="imageSrc" class="d-block img-preview">
             </div>
-						<div class="img-div" *ngIf="!imageSrc">
-              <input #browseFile accept="image/*" type="file" class="hide-style" (change)="onFileChange($event)">
-              <a (click)="browseFile.click()" href="javascript:void(0)" >Upload your photo</a>
+            <div *ngIf="imageSrc">
+              <input id="browseFile" accept="image/*" type="file" class="hide-style" (change)="onFileChange($event)">
+              <a class="d-block edit-a" href="javascript:void(0)" (click)="openFileBrowser($event)">Edit photo</a>
+              <a *ngIf="submitted" class="d-block edit-a" href="javascript:void(0)" (click)="editProfile()">Edit profile</a>
             </div>
 					</div>
 				</div>

@@ -105,6 +105,12 @@ export class UserRegisterFormComponent implements OnInit {
     }
   }
 
+  openFileBrowser(event: any) {
+    event.preventDefault();
+    let element: HTMLElement = document.getElementById('browseFile') as HTMLElement;
+    element.click();
+  }
+
   editProfile() {
     this.submitted = false;
   }
