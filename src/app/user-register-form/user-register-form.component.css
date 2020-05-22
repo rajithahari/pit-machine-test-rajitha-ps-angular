@@ -88,6 +88,11 @@
   max-height: 150px !important;
 }
 
+.edit-a {
+  color: #2196F3;
+  text-decoration: underline;
+}
+
 .img-div a { 
   color: #fff;
   text-decoration: underline;

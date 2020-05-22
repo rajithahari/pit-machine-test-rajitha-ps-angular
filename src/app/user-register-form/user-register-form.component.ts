@@ -18,7 +18,8 @@ export class UserRegisterFormComponent implements OnInit {
   address: string = '';
   interests = '';
   interestList = [];
-  imageSrc: string;
+  imageSrc: any;
+  userInfo: any = {};
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
@@ -40,7 +41,7 @@ export class UserRegisterFormComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]*')]],
       lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]*')]],
       email: ['', [Validators.required, Validators.email]],
-      age: ['', Validators.required],
+      age: [1, Validators.required],
       phone: ['', [Validators.required]],
       state: ['', Validators.required],
       country: ['', Validators.required],
@@ -48,7 +49,7 @@ export class UserRegisterFormComponent implements OnInit {
       address1: ['', Validators.required],
       address2: ['', Validators.required],
       interest: ['', Validators.required],
-      isSubscribed: [''],
+      isSubscribed: [1],
       file: ['', Validators.required]
     });
   }
@@ -92,24 +93,16 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.imageSrc = reader.result as string;
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.imageSrc = event.target.result;
         this.userForm.patchValue({
-          file: reader.result
-        });
-      };
+          file: event.target.result
+        })
+      }
     }
-  }
-
-  openFileBrowser(event: any) {
-    event.preventDefault();
-    let element: HTMLElement = document.getElementById('browseFile') as HTMLElement;
-    element.click();
   }
 
   editProfile() {
@@ -117,12 +110,12 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    console.log(this.userForm.value);
     if (this.userForm.invalid === true) {
       return;
     } else {
-      const data = this.userForm.value;
-      console.log(data);
+      this.submitted = true;
+      this.userInfo = this.userForm.value;
     }
   }
 }
