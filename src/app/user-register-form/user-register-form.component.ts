@@ -19,15 +19,18 @@ export class UserRegisterFormComponent implements OnInit {
   interestList: any;
   imageSrc: any;
   userInfo: any = {};
+  editable: Boolean = false;
+  abbrevations = [];
   
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
     this.selectedAge = 1;
     this.addressSelected = false;
+    this.abbrevations = ['Mr', 'Mrs', 'Miss', 'Master']
   }
 
   invalidName() {
-    return (this.submitted && this.userForm.controls.firstName.errors != null && this.userForm.controls.lastName.errors != null);
+    return (this.submitted && this.userForm.controls.abbrevation.errors && this.userForm.controls.firstName.errors != null && this.userForm.controls.lastName.errors != null);
   }
 
   invalidEmail() {
@@ -67,8 +70,8 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // let phoneNumberPattern = "^(\+\d{1,3}[- ]?)?\d{10}+$";
     this.userForm = this.formBuilder.group({
+      abbrevation: ['Mr', Validators.required],
       firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]*')]],
       lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]*')]],
       email: ['', [Validators.required, Validators.email]],
@@ -116,11 +119,17 @@ export class UserRegisterFormComponent implements OnInit {
     this.interests = event.target.value;
     this.interestList = this.interests.split(', ');
     this.interestList = this.interestList.filter(Boolean);
+    this.userForm.patchValue({
+      interest: this.interests
+    });
   }
 
   removeInterest(interest) {
     this.interestList = this.interestList.filter(item => item !== interest);
     this.interests = this.interestList.join(', ');
+    this.userForm.patchValue({
+      interest: this.interests
+    });
   }
 
   onFileChange(event: any) {
@@ -143,14 +152,15 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   editProfile() {
-    this.submitted = false;
+    this.editable = false;
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.userForm.invalid === true) {
       return;
     } else {
-      this.submitted = true;
+      this.editable = true;
       this.userInfo = this.userForm.value;
       switch (this.userInfo.age) {
         case 0: this.userInfo.age = '13'; break;
@@ -158,12 +168,15 @@ export class UserRegisterFormComponent implements OnInit {
         case 2: this.userInfo.age = '30'; break;
         case 3: this.userInfo.age = '45'; break;
       }
-      for (let i = 0; i < this.interestList.length;i++) {
-        if ((this.interestList.length-1) === i) {
-          this.userInfo.interest += "</span>and <span class=info-span>" + this.interestList[i];
-        } else {
-          this.userInfo.interest += this.interestList[i] + ', ';
-        }
+      if (this.interestList.length > 1) {
+        this.userInfo.interest = '';
+        for (let i = 0; i < this.interestList.length;i++) {
+          if (this.interestList.length-1 === i) {
+            this.userInfo.interest += "</span> and <span class=info-span>" + this.interestList[i];
+          } else {
+            this.userInfo.interest += ', ' + this.interestList[i];
+          }
+        } 
       }
     }
   }

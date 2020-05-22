@@ -12,7 +12,7 @@
             <div *ngIf="imageSrc">
               <input id="browseFile" accept="image/*" type="file" class="hide-style" (change)="onFileChange($event)">
               <a class="d-block edit-a" href="javascript:void(0)" (click)="openFileBrowser($event)">Edit photo</a>
-              <a *ngIf="submitted" class="d-block edit-a" href="javascript:void(0)" (click)="editProfile()">Edit profile</a>
+              <a *ngIf="editable" class="d-block edit-a" href="javascript:void(0)" (click)="editProfile()">Edit profile</a>
             </div>
 					</div>
 				</div>
@@ -20,13 +20,18 @@
 			<div class="col-sm-12 col-md-6 col-lg-6 my-1">
 				<div class="card">
 					<div class="card-body">
-            <p *ngIf="submitted">
-              I am <span class="info-span">{{userInfo.firstName + ' ' + userInfo.lastName}}</span> and I am above <span class="info-span">{{userInfo.age}}</span> years and you can send your emails to <span class="info-span">{{userInfo.email}}</span> I lives in the states of <span class="info-span">{{userInfo.state}}</span> I likes to <span class="info-span" [innerHtml]=userInfo.interest></span>. <span *ngIf="userInfo.isSubscribed">And please send me the news letters. </span>And plesae reach out to me on my phone <span class="info-span">{{userInfo.phone}}</span> 
+            <p *ngIf="editable">
+              I am <span class="info-span">{{userInfo.abbrevation + ' ' + userInfo.firstName + ' ' + userInfo.lastName}}</span> and I am above <span class="info-span">{{userInfo.age}}</span> years and you can send your emails to <span class="info-span">{{userInfo.email}}</span> I lives in the states of <span class="info-span">{{userInfo.state}}</span> I likes to <span class="info-span" [innerHtml]=userInfo.interest></span>. <span *ngIf="userInfo.isSubscribed">And please send me the news letters. </span>And plesae reach out to me on my phone <span class="info-span">{{userInfo.phone}}</span> 
             </p>
-						<form *ngIf="!submitted" [formGroup]='userForm' (ngSubmit)='onSubmit()'>
+						<form *ngIf="!editable" [formGroup]='userForm' (ngSubmit)='onSubmit()'>
 							<div class="form-group row" [ngClass]="{'has-error': invalidName()}">
 								<!-- First Name -->
-								<label class="col-sm-4 col-form-label" [ngClass]="{ 'has-error': invalidName() }"> Name</label>
+								<label class="col-sm-2 col-form-label" [ngClass]="{ 'has-error': invalidName() }"> Name</label>
+                <div class="col-sm-2">
+                  <select name="abbrevation" formControlName="abbrevation" class="form-control custom-select-sm" selected>
+                    <option *ngFor="let abbr of abbrevations" [ngValue]="abbr">{{abbr}}</option>
+                  </select>
+                </div>
 								<div class="col-sm-4">
 									<input type="text" formControlName="firstName" id="firstName" name="firstName" class="form-control" placeholder="First Name" pattern="^[A-Za-z -]{1,20}" maxlength=20>
                 </div>
