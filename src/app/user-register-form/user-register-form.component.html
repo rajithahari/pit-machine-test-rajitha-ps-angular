@@ -4,10 +4,15 @@
 			<div class="col-sm-12 col-md-6 col-lg-6 my-1">
 				<div class="card">
 					<div class="card-body">
-						<div class="img-div">
-              <img [src]="imageSrc" *ngIf="imageSrc">
-              <input *ngIf="!imageSrc" id="browseFile" type="file" class="hide-style" (click)="onFileChange($event)">
-              <a *ngIf="!imageSrc" href="javascript:void(0)" (click)="openFileBrowser($event)">Upload your photo</a>
+            <div *ngIf="imageSrc" >
+              <img [src]="imageSrc" class="img-fluid">
+              <input id="browseFile" type="file" class="hide-style" (click)="onFileChange($event)">
+              <a href="javascript:void(0)" (click)="openFileBrowser($event)">Edit photo</a>
+              <a href="javascript:void(0)" (click)="openFileBrowser($event)">Edit profile</a>
+            </div>
+						<div class="img-div" *ngIf="!imageSrc">
+              <input id="browseFile" type="file" class="hide-style" (click)="onFileChange($event)">
+              <a href="javascript:void(0)" (click)="openFileBrowser($event)">Upload your photo</a>
             </div>
 					</div>
 				</div>
