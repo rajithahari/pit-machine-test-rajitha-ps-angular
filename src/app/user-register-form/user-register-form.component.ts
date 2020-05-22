@@ -112,6 +112,10 @@ export class UserRegisterFormComponent implements OnInit {
     element.click();
   }
 
+  editProfile() {
+    this.submitted = false;
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.userForm.invalid === true) {
