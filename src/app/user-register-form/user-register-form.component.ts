@@ -11,16 +11,15 @@ export class UserRegisterFormComponent implements OnInit {
   registered = false;
   submitted = false;
   userForm: any = new FormControl('');
-  guid: string;
   ageGroup = [];
   selectedAge: any;
   addressSelected: boolean;
   address: string = '';
   interests = '';
-  interestList = [];
+  interestList: any;
   imageSrc: any;
   userInfo: any = {};
-
+  
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.ageGroup = ['13-19', '20-29', '30-45', '45 & Above'];
     this.selectedAge = 1;
@@ -33,6 +32,38 @@ export class UserRegisterFormComponent implements OnInit {
 
   invalidEmail() {
     return (this.submitted && this.userForm.controls.email.errors != null);
+  }
+
+  invalidAge() {
+    return (this.submitted && this.userForm.controls.age.errors != null);
+  }
+
+  invalidPhone() {
+    return (this.submitted && this.userForm.controls.phone.errors != null);
+  }
+
+  invalidState() {
+    return (this.submitted && this.userForm.controls.state.errors != null);
+  }
+
+  invalidCountry() {
+    return (this.submitted && this.userForm.controls.country.errors != null);
+  }
+
+  invalidAddress() {
+    return (this.submitted && this.userForm.controls.address.errors != null);
+  }
+
+  invalidAddress1() {
+    return (this.submitted && this.userForm.controls.address1.errors != null);
+  }
+
+  invalidAddress2() {
+    return (this.submitted && this.userForm.controls.address2.errors != null);
+  }
+
+  invalidInterest() {
+    return (this.submitted && this.userForm.controls.interest.errors != null);
   }
 
   ngOnInit() {
@@ -116,13 +147,24 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userForm.value);
     if (this.userForm.invalid === true) {
       return;
     } else {
       this.submitted = true;
       this.userInfo = this.userForm.value;
-      
+      switch (this.userInfo.age) {
+        case 0: this.userInfo.age = '13'; break;
+        case 1: this.userInfo.age = '20'; break;
+        case 2: this.userInfo.age = '30'; break;
+        case 3: this.userInfo.age = '45'; break;
+      }
+      for (let i = 0; i < this.interestList.length;i++) {
+        if ((this.interestList.length-1) === i) {
+          this.userInfo.interest += "</span>and <span class=info-span>" + this.interestList[i];
+        } else {
+          this.userInfo.interest += this.interestList[i] + ', ';
+        }
+      }
     }
   }
 }
