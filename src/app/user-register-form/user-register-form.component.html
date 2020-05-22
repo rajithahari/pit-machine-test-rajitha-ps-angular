@@ -21,7 +21,7 @@
 				<div class="card">
 					<div class="card-body">
             <p *ngIf="submitted">
-              I am <em>{{userInfo.firstName}}</em>
+              I am <span class="info-span">{{userInfo.firstName + ' ' + userInfo.lastName}}</span> and I am above 20 years and you can send your emails to <span class="info-span">{{userInfo.email}}</span> I lives in the states of <span class="info-span">{{userInfo.state}}</span> I likes to <span class="info-span">{{interests}}</span>. <span *ngIf="userInfo.isSubscribed">And please send me the news letters. </span>And plesae reach out to me on my phone <span class="info-span">{{userInfo.phone}}</span> 
             </p>
 						<form *ngIf="!submitted" [formGroup]='userForm' (ngSubmit)='onSubmit()'>
 							<div class="form-group row" [ngClass]="{'has-error': invalidName()}">
@@ -65,7 +65,7 @@
                 <label for="state" class="control-label col-sm-4">State</label>
                 <div class="col-sm-8">
                   <select name="state" formControlName="state" class="form-control custom-select-sm">
-                    <option selected>Select State</option>
+                    <option selected value=''>Select State</option>
                     <option>Alaska</option>
                   </select>
                 </div>
@@ -75,7 +75,7 @@
                 <label for="country" class="control-label col-sm-4">Country</label>
                 <div class="col-sm-8">
                   <select name="country" formControlName="country" class="form-control custom-select-sm">
-                    <option selected>Select Country</option>
+                    <option selected  value=''>Select Country</option>
                     <option>United States</option>
                   </select>
                 </div>
@@ -85,7 +85,7 @@
                 <label for="address" class="control-label col-sm-4">Address</label>
                 <div class="col-sm-8">
                   <select name="address" formControlName="address" class="form-control custom-select-sm" (change)='selectAddress($event)'>
-                    <option selected>Select Address</option>
+                    <option selected  value=''>Select Address</option>
                     <option>Home</option>
                     <option>Company</option>
                   </select>

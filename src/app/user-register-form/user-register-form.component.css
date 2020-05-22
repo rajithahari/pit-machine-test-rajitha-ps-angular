@@ -165,3 +165,7 @@
 .hide-style {
   visibility: hidden;
 }
+
+.info-span {
+  color: #2196F3;
+}

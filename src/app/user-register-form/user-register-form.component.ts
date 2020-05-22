@@ -116,6 +116,7 @@ export class UserRegisterFormComponent implements OnInit {
     } else {
       this.submitted = true;
       this.userInfo = this.userForm.value;
+      
     }
   }
 }
