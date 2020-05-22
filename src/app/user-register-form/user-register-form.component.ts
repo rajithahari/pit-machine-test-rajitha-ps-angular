@@ -35,12 +35,13 @@ export class UserRegisterFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    // let phoneNumberPattern = "^(\+\d{1,3}[- ]?)?\d{10}+$";
     this.userForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]+$')]],
-      lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]+$')]],
+      firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]*')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z -]*')]],
       email: ['', [Validators.required, Validators.email]],
       age: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required]],
       state: ['', Validators.required],
       country: ['', Validators.required],
       address: ['', Validators.required],
